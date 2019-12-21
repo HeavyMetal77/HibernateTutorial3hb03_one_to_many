@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class TestJdbc {
     public static void main(String[] args) {
-        String db1 = "hb-03-one-to-many"; //схема БД + не забудь поменять название в hibernate.cfg.xml
+        String db1 = "hb-04-one-to-many-uni"; //схема БД + не забудь поменять название в hibernate.cfg.xml
         String jdbcUrl = "jdbc:mysql://localhost:3306/" + db1 + "?useSSL=false&serverTimezone=UTC";
         String user = "hbstudent";
         String pass = "hbstudent";
