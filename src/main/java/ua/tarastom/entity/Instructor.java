@@ -40,7 +40,11 @@ public class Instructor {
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
 
-    @OneToMany(mappedBy="instructor",
+
+    //FetchType.LAZY - загрузка курсов происходит только по запросу (ленивая)
+    //FetchType.EAGER - загрузка курсов происходит немедленно в память при запросе инструктора
+    // и получить из памяти ее можно немедленно без обращения к БД (в дебаге видно)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="instructor",
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                     CascadeType.DETACH, CascadeType.REFRESH})
     private List<Course> courses;
