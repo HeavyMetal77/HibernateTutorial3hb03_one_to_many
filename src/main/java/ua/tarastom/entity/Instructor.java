@@ -8,20 +8,6 @@ import java.util.List;
 @Table(name = "instructor")
 public class Instructor {
 
-    // annotate the class as an entity and map to db table
-
-    // define the fields
-
-    // annotate the fields with db column names
-
-    // ** set up mapping to InstructorDetail entity
-
-    // create constructors
-
-    // generate getter/setter methods
-
-    // generate toString() method
-
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
@@ -40,14 +26,30 @@ public class Instructor {
     @JoinColumn(name="instructor_detail_id")
     private InstructorDetail instructorDetail;
 
-
-    //FetchType.LAZY - загрузка курсов происходит только по запросу (ленивая)
-    //FetchType.EAGER - загрузка курсов происходит немедленно в память при запросе инструктора
-    // и получить из памяти ее можно немедленно без обращения к БД (в дебаге видно)
     @OneToMany(fetch = FetchType.LAZY, mappedBy="instructor",
             cascade= {CascadeType.PERSIST, CascadeType.MERGE,
                     CascadeType.DETACH, CascadeType.REFRESH})
     private List<Course> courses;
+
+    //FetchType.LAZY - загрузка курсов происходит только по запросу (ленивая)
+    //FetchType.EAGER - загрузка курсов происходит немедленно в память при запросе инструктора
+    // и получить из памяти ее можно немедленно без обращения к БД (в дебаге видно)
+
+    // annotate the class as an entity and map to db table
+
+    // define the fields
+
+    // annotate the fields with db column names
+
+    // ** set up mapping to InstructorDetail entity
+
+    // create constructors
+
+    // generate getter/setter methods
+
+    // generate toString() method
+
+
 
     public Instructor() {
     }
